@@ -7,4 +7,4 @@ from .models import Post
 
 def index(request , post_id  ,*args , **kwargs):
     obj = Post.objects.get(id = post_id)
-    return HttpResponse(f"<h1>{post_id} - Post is : {obj.content} </h1>")
+    return HttpResponse(f"<h1>{post_id} - asjjhfkjashdjhdsjkhg.jsh.ajhg.ajsdhg.jasmdbfha.f : {obj.content} </h1>")
