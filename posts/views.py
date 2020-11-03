@@ -6,6 +6,7 @@ from django.http import HttpResponse , Http404 , JsonResponse
 from .models import Post
 
 def index(request , post_id  ,*args , **kwargs):
+    print(request.user)
     data = {
             "id" : post_id ,    
         }
