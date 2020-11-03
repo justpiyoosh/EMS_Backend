@@ -20,5 +20,6 @@ from posts import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     #path('api/accounts',include('accounts.urls')),
-    path('post/<int:post_id>',views.index)
+    path('post/<int:post_id>',views.index),
+    path('posts',views.posts_list_view)
 ]
