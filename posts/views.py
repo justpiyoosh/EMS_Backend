@@ -1,12 +1,27 @@
 from django.shortcuts import render
 from django.http import HttpResponse , Http404 , JsonResponse
+import json
 
-# Create your views here.
 
 from .models import Post
 
-def index(request , post_id  ,*args , **kwargs):
-    print(request.user)
+def index(request , *args , **kwargs):
+    if request.method == "GET":
+        return HttpResponse('<h1>Welcome on Homepage</h1>')
+    else:
+        data = {"message" : "only get method is allowed"}
+        return JsonResponse(data)
+
+def create_post(request , *args , **kwargs):
+    if request.method == "POST":
+        data = json.loads(request.body) #converts json to dictionary
+        Post.objects.create(content=data['content'])
+        return JsonResponse({"message" : "Post Created Successfully" })
+
+def get_post(request , post_id  ,*args , **kwargs):
+    if "session-id" not in request.headers:
+        return JsonResponse({"message" : "unauthorized"}) 
+
     data = {
             "id" : post_id ,    
         }
@@ -17,12 +32,26 @@ def index(request , post_id  ,*args , **kwargs):
     except:
         data["message"] = "Not Found"
         status = 404
-    return JsonResponse(data,status = status)
+    data["status"] = status
+    return JsonResponse(data)
 
-def posts_list_view(request , *args  , **kwargs):
-    all_posts = Post.objects.all()
-    posts_list = [{"post_id" : post.id , "content" : post.content} for post in all_posts]
-    data = {
-        "response" : posts_list
-    }
-    return JsonResponse(data , status = 200)
+
+def get_all_posts(request , *args  , **kwargs):
+    if request.method == "GET":
+        all_posts = Post.objects.all()
+        posts_list = [{"post_id" : post.id , "content" : post.content} for post in all_posts]
+        data = {
+            "response" : posts_list,
+            "status" : 200
+        }
+        return JsonResponse(data)
+    else: 
+         return JsonResponse({"message" : "Only get method is allowed"})
+
+
+
+def delete_post(request , post_id , *args , **kwargs):
+    qs = Post.objects.filter(id = post_id)
+    return JsonResponse({"message" : "Post deleted successfully"} , status=200)
+
+    
