@@ -37,6 +37,8 @@ def get_post(request , post_id  ,*args , **kwargs):
 
 
 def get_all_posts(request , *args  , **kwargs):
+    if "session-id" not in request.headers:
+        return JsonResponse({"message" : "unauthorized"}) 
     if request.method == "GET":
         all_posts = Post.objects.all()
         posts_list = [{"post_id" : post.id , "content" : post.content} for post in all_posts]
