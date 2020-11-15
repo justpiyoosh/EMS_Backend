@@ -80,6 +80,8 @@ TEMPLATES = [
         },
     },
 ]
+
+
 AUTH_USER_MODEL = 'account.Account'
 
 
