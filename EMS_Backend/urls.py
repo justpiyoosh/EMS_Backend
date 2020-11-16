@@ -30,6 +30,8 @@ urlpatterns = [
     path('post/<int:post_id>/delete',views.delete_post),
 
     path('api/account/',include('account.api.urls')), 
+
+    path('api/blog/', include('blog.api.urls')),
 ]
 
 if settings.DEBUG:
