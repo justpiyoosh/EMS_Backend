@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view , permission_classes ,authentication_classes
 from rest_framework.permissions import IsAuthenticated
 
-from account.api.serializers import RegistrationSerializer
+from account.api.serializers import RegistrationSerializer , AccountPropertiesSerializer
 from rest_framework.authtoken.models import Token
 
 # Register
@@ -31,3 +31,37 @@ def registration_view(request):
 			data['status'] =  400
 			data['status_message'] = "Not Nice"
 		return Response(data)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def account_properties_view(request):
+	try:
+		account = request.user
+	except:
+		return Response({"message" : "Account Does not exist"})
+
+	if request.method == 'GET':
+		serializer = AccountPropertiesSerializer(account)
+		return Response(serializer.data)
+
+
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def update_account_view(request):
+	try:
+		account = request.user
+	except:
+		return Response({"message" : "Account Does not exist"})
+
+	if request.method == 'PUT':
+		serializer = AccountPropertiesSerializer(account , data =request.data)
+		data = {}
+		if serializer.is_valid():
+			serializer.save()
+			data["response"] = "Acoount updated successfully"
+			return Response(data=data)
+		return Response(serializer.errors , status=status.HTTP_400_BAD_REQUEST)
+
+	
