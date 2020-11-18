@@ -63,10 +63,17 @@ ROOT_URLCONF = 'EMS_Backend.urls'
 
 
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",
-    "http://127.0.0.1:9000"
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:8080",
+#     "http://127.0.0.1:9000"
+# ]
+
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+
+
+
 
 
 TEMPLATES = [
