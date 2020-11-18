@@ -25,7 +25,7 @@ SECRET_KEY = 'aawc9sur&6_p9!wbmip*)k9e!!s0h)q-y_^a(d=wxe(m@_-t_('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS=['EC2_DNS_NAME' , 'http://localhost:3000']
+ALLOWED_HOSTS=['*']
 
 
 # Application definition
@@ -197,4 +197,4 @@ AWS_STORAGE_BUCKET_NAME = "ems-backend-bucket"
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
