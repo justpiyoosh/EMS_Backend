@@ -12,6 +12,7 @@ pylint==2.6.0
 pylint-django==2.3.0
 pylint-plugin-utils==0.6
 pytz==2020.1
+reportlab==3.5.55
 six==1.15.0
 sqlparse==0.4.1
 toml==0.10.1
