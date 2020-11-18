@@ -30,7 +30,6 @@ mccabe==0.6.1
 paramiko==2.7.2
 pathspec==0.5.9
 Pillow==8.0.1
-psycopg2==2.8.6
 pycparser==2.20
 pylint==2.6.0
 pylint-django==2.3.0
