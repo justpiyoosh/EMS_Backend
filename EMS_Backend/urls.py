@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path , include
 from django.conf.urls.static import static
 from django.conf import settings
+import debug_toolbar
 
 from posts import views
 
@@ -34,6 +35,15 @@ urlpatterns = [
     path('api/account/',include('account.api.urls')), 
 
     path('api/blog/', include('blog.api.urls')),
+
+
+
+
+
+
+
+        path('__debug__/', include(debug_toolbar.urls)),
+
 ]
 
 if settings.DEBUG:
