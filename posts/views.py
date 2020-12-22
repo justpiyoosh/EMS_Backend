@@ -15,11 +15,12 @@ from reportlab.pdfgen import canvas
 from .models import Post
 
 def index(request , *args , **kwargs):
-    if request.method == "GET":
-        return HttpResponse('<h1>Welcome on Homepage</h1>')
-    else:
-        data = {"message" : "only get method is allowed"}
-        return JsonResponse(data)
+    # if request.method == "GET":
+    #     return HttpResponse('<h1>Welcome on Homepage</h1>')
+    # else:
+    #     data = {"message" : "only get method is allowed"}
+    #     return JsonResponse(data)
+    return HttpResponse("<h1>Welcome on EMS Homepage!!</h1>")
 
 def create_post(request , *args , **kwargs):
     if request.method == "POST":
