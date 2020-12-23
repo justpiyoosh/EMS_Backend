@@ -73,6 +73,8 @@ ROOT_URLCONF = 'EMS_Backend.urls'
 
 
 
+
+
 # CORS_ALLOWED_ORIGINS = [
 #     "http://localhost:8080",
 #     "http://127.0.0.1:9000"
@@ -132,13 +134,33 @@ WSGI_APPLICATION = 'EMS_Backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'EMS_Backend',
-        'USER': 'justpiyoosh',
-        'PASSWORD': 'Helloworld.12',
-        'HOST': 'database-1.ctsvb6l2ipbj.ap-south-1.rds.amazonaws.com',
+        'NAME': 'ems',
+        'USER': 'postgres',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
+
+
+
+
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django_redis.cache.RedisCache",
+#         "LOCATION": "redis://127.0.0.1:6379/1",
+#         "OPTIONS": {
+#             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+#         },
+#         "KEY_PREFIX": "example"
+#     }
+# }
+
+# CACHE_TTL = 60 * 15
+
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
