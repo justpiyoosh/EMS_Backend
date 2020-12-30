@@ -1,4 +1,8 @@
 venv
 env
-db.sqlite3
 .vscode
+
+
+### Django ###
+*.pyc
+__pycache__/
