@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from account.api.serializers import RegistrationSerializer , AccountPropertiesSerializer
 from rest_framework.authtoken.models import Token
+from account.models import Account
 
 # Register
 # Response: https://gist.github.com/mitchtabian/c13c41fa0f51b304d7638b7bac7cb694
@@ -63,5 +64,15 @@ def update_account_view(request):
 			data["response"] = "Acoount updated successfully"
 			return Response(data=data)
 		return Response(serializer.errors , status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+@permission_classes([])
+def account_info(request , username):
+	query_user = Account.objects.get(username = username)
+	#print(type(query_user))
+	data = { "email" : query_user.email ,
+	         "username" : query_user.username,
+			 "date_joined" : query_user.date_joined         }
+	return Response(data)
 
 	
