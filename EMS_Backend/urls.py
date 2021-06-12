@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path , include
 from django.conf.urls.static import static
 from django.conf import settings
-import debug_toolbar
 
 from posts import views
 
@@ -30,7 +29,6 @@ urlpatterns = [
     path('get_all_posts',views.get_all_posts),
     path('create_post',views.create_post),
     path('post/<int:post_id>/delete',views.delete_post),
-    path('pdf',views.some_view),
 
     path('api/account/',include('account.api.urls')), 
 
@@ -41,8 +39,6 @@ urlpatterns = [
 
 
 
-
-        path('__debug__/', include(debug_toolbar.urls)),
 
 ]
 

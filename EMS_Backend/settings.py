@@ -37,21 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
-
     'corsheaders',
     'posts',
     'account',
     'blog',
-
     'rest_framework',
     'rest_framework.authtoken',
-
-
-
-
-   'storages',
-
 ]
 
 MIDDLEWARE = [
@@ -63,9 +54,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-
 ]
 
 ROOT_URLCONF = 'EMS_Backend.urls'
@@ -124,23 +112,23 @@ WSGI_APPLICATION = 'EMS_Backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ems',
-        'USER': 'postgres',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'ems',
+#         'USER': 'postgres',
+#         'PASSWORD': 'password',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 
 
@@ -211,19 +199,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
 
 
 
-#S3 Bucket Config
+# #S3 Bucket Config
 
-AWS_ACCESS_KEY_ID = "AKIASRTDFN2RPCQHPO6W"
+# AWS_ACCESS_KEY_ID = "
 
-AWS_SECRET_ACCESS_KEY = "2qqxjuHQm62g7aTDqLCklrVRBbqmnJOpe/iht7YT"
+# AWS_SECRET_ACCESS_KEY = 
 
-AWS_STORAGE_BUCKET_NAME = "ems-backend-bucket"
+# AWS_STORAGE_BUCKET_NAME =
 
 
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# #STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 
