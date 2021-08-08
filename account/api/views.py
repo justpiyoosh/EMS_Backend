@@ -86,7 +86,7 @@ def fetch_all_usernames(request, username):
 		data = []
 		users = Account.objects.filter(username__contains=username)
 		for user in users:
-			data.append(user.username)
+			data.append([user.username, user.dp_code])
 		usernames = {}
 		usernames["names"] = data 
 		if len(data) == 0:
