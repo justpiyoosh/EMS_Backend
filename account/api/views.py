@@ -16,6 +16,7 @@ from account.models import Account
 def registration_view(request):
 
 	if request.method == 'POST':
+		print( request.data )
 		serializer = RegistrationSerializer(data=request.data)
 		data = {}
 		if serializer.is_valid():
