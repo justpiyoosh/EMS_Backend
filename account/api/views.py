@@ -23,6 +23,7 @@ def registration_view(request):
 			data['response'] = 'successfully registered new user.'
 			data['email'] = account.email
 			data['username'] = account.username
+			data['dp_code'] = account.dp_code
 			token = Token.objects.get(user=account).key
 			data['token'] = token
 			data['status'] = 201
