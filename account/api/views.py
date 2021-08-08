@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from account.api.serializers import RegistrationSerializer , AccountPropertiesSerializer
 from rest_framework.authtoken.models import Token
 from account.models import Account
+from django.http import JsonResponse
 
 # Register
 # Response: https://gist.github.com/mitchtabian/c13c41fa0f51b304d7638b7bac7cb694
@@ -70,11 +71,27 @@ def update_account_view(request):
 @api_view(['GET'])
 @permission_classes([])
 def account_info(request , username):
-	query_user = Account.objects.get(username = username)
-	#print(type(query_user))
+	query_user = Account.objects.get(username = "justpiyoosh")
 	data = { "email" : query_user.email ,
 	         "username" : query_user.username,
 			 "date_joined" : query_user.date_joined         }
 	return Response(data)
 
+@api_view(['GET', ])
+@permission_classes([])
+@authentication_classes([])
+def fetch_all_usernames(request, username):
+	#users  = cursor.execute('''select username from Account where username like '%ju%' ''')
+	try:
+		data = []
+		users = Account.objects.filter(username__contains=username)
+		for user in users:
+			data.append(user.username)
+		usernames = {}
+		usernames["names"] = data 
+		if len(data) == 0:
+			return Response({"message" : "Sorry we don't have users with this username"})
+		return JsonResponse(usernames)
+	except:
+		return Response({"message" : "Sorry we don't have users with this username"})
 	
